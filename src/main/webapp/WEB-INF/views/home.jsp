@@ -39,7 +39,8 @@
     </div>
 
     <div class="panel-footer text-center">
-        <ul class="pagination" style="margin: 0px">
+        <ul class="pagination" id="page"></ul>
+        <%--<ul class="pagination" style="margin: 0px">
             <c:choose>
                 <c:when test="${page.currentPage==1}">
                     <li class="disabled"><a href="javascript:;">首页</a></li>
@@ -61,8 +62,26 @@
                 </c:otherwise>
             </c:choose>
 
-        </ul>
+        </ul>--%>
     </div>
 </div>
+
+<script src="/static/js/jquery-1.11.3.min.js"></script>
+<script src="/static/js/jquery.twbsPagination.min.js"></script>
+<script>
+    $(function () {
+        $("#page").twbsPagination({
+            totalPages:${page.pageTotal},
+            visiblePages: 10,
+            first: "首页",
+            prev: '上一页',
+            next: '下一页',
+            last: '末页',
+            href: '?p={{number}}'
+    })
+        ;
+    });
+
+</script>
 </body>
 </html>
